@@ -30,12 +30,12 @@ const airlinesModel = {
     }),
     inputAirlines: (data) => new Promise((resolve, reject) => {
         const {
-            id, file, name, pic, phone, date, isActive,
+            id, image, name, pic, phone, date, isActive,
         } = data;
 
         db.query(
-            `INSERT INTO airlines ( photo, name, pic, phone, created_date, id, is_active) 
-            VALUES ('${file}', '${name}','${pic}', '${phone}', $1, '${id}',${isActive})`,
+            `INSERT INTO airlines ( image, name, pic, phone, created_date, id, is_active) 
+            VALUES ('${image}', '${name}','${pic}', '${phone}', $1, '${id}',${isActive})`,
             [date],
             (err, res) => {
                 if (err) {

@@ -7,7 +7,7 @@ const { failed } = require("../utils/createResponse");
 const multerUpload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      if (file.fieldname === "photo") {
+      if (file.fieldname === "image") {
         cb(null, "./public/photo");
       }
     },
@@ -19,7 +19,7 @@ const multerUpload = multer({
     },
   }),
   fileFilter: (req, file, cb) => {
-    if (file.fieldname === "photo") {
+    if (file.fieldname === "image") {
       // filter mimetype
       if (
         file.mimetype === "image/png" ||
