@@ -41,7 +41,7 @@ const multerUpload = multer({
 module.exports = (req, res, next) => {
   const multerFields = multerUpload.fields([
     {
-      name: "photo",
+      name: "image",
       maxCount: 1,
     },
   ]);
