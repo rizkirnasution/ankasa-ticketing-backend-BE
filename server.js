@@ -24,7 +24,7 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/img", express.static("./public"));
+app.use("/img", express.static("./public/photo"));
 
 // root router
 app.get("/", (req, res) =>
