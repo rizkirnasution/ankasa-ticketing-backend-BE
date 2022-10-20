@@ -13,7 +13,7 @@ const destinationController = {
         id,
         country: req.body.country,
         place: req.body.place,
-        image: `http://${PGHOST}:${PORT}/img/${image}`,
+        image: `http://${PGHOST}/img/${image}`,
         price: Number(req.body.price),
         totalAirline: Number(req.body.totalAirline),
         date: new Date(),

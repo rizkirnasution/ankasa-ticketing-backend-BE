@@ -47,13 +47,13 @@ const airlinesModel = {
     }),
     updateAirlines: (
         id,
-        photo,
+        image,
         name,
         pic,
         phone,
     ) => new Promise((resolve, reject) => {
         db.query(
-            `UPDATE airlines SET photo='${photo}', name='${name}',pic='${pic}'
+            `UPDATE airlines SET image='${image}', name='${name}',pic='${pic}'
                 , phone='${phone}' WHERE id='${id}'`,
             (err, res) => {
                 if (err) {

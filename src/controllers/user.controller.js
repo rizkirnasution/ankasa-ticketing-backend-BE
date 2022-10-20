@@ -72,8 +72,8 @@ module.exports = {
       }
 
       // jika update user disertai photo
-      const { photo, email } = user.rows[0]; // email tidak boleh diubah
-      await userModel.updateById(id, { ...req.body, photo, email });
+      const { image, email } = user.rows[0]; // email tidak boleh diubah
+      await userModel.updateById(id, { ...req.body, image, email });
 
       success(res, {
         code: 200,
@@ -97,8 +97,8 @@ module.exports = {
       if (!user.rowCount) {
         // menghapus photo jika ada
         if (req.files) {
-          if (req.files.photo) {
-            deleteFile(req.files.photo[0].path);
+          if (req.files.image) {
+            deleteFile(req.files.image[0].path);
           }
         }
 
@@ -110,20 +110,20 @@ module.exports = {
         return;
       }
 
-      // jika update user disertai photo
-      let { photo } = user.rows[0];
+      // jika update user disertai image
+      let { image } = user.rows[0];
       if (req.files) {
-        if (req.files.photo) {
-          // menghapus photo lama
-          if (user.rows[0].photo) {
-            await deleteGoogleDrive(user.rows[0].photo);
+        if (req.files.image) {
+          // menghapus image lama
+          if (user.rows[0].image) {
+            await deleteGoogleDrive(user.rows[0].image);
           }
-          // mendapatkan name photo baru
-          photo = await uploadGoogleDrive(req.files.photo[0]);
-          deleteFile(req.files.photo[0].path);
+          // mendapatkan name image baru
+          image = await uploadGoogleDrive(req.files.image[0]);
+          deleteFile(req.files.image[0].path);
         }
       }
-      await userModel.updatePhoto(user.rows[0].id, photo);
+      await userModel.updatePhoto(user.rows[0].id, image);
 
       success(res, {
         code: 200,
@@ -155,8 +155,8 @@ module.exports = {
       await userModel.removeById(id);
 
       // menghapus photo jika ada
-      if (user.rows[0].photo) {
-        deleteFile(`public/${user.rows[0].photo}`);
+      if (user.rows[0].image) {
+        deleteFile(`public/${user.rows[0].image}`);
       }
 
       success(res, {

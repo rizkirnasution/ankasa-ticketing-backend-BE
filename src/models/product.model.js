@@ -13,7 +13,7 @@ const productModel = {
         orderBy,
         paging,
     ) => new Promise((resolve, reject) => {
-        let sql = 'SELECT products.origin, products.destination, products.price, products.type, products.stock, products.transit_total, products.flight_date, products.airline_id, products.estimation, products.created_date, products.code, products.gate, products.terminal, products.id, airlines.name, airlines.photo FROM products INNER JOIN airlines ON products.airline_id = airlines.id WHERE products.stock >= 1';
+        let sql = 'SELECT products.origin, products.destination, products.price, products.type, products.stock, products.transit_total, products.flight_date, products.airline_id, products.estimation, products.created_date, products.code, products.gate, products.terminal, products.id, airlines.name, airlines.image FROM products INNER JOIN airlines ON products.airline_id = airlines.id WHERE products.stock >= 1';
 
         if (transit) {
             sql += ` AND products.transit_total = ${transit}`;
@@ -160,7 +160,7 @@ const productModel = {
     }),
     detailProduct: (id) => new Promise((resolve, reject) => {
         db.query(
-            `SELECT products.id, products.airline_id, products.origin, products.destination, products.price, products.stock, products.transit_total, products.flight_date, products.estimation, products.created_date, products.code, products.terminal, products.gate, products.type, airlines.name, airlines.pic, airlines.phone, airlines.photo FROM products INNER JOIN airlines ON products.airline_id = airlines.id WHERE products.id='${id}'`,
+            `SELECT products.id, products.airline_id, products.origin, products.destination, products.price, products.stock, products.transit_total, products.flight_date, products.estimation, products.created_date, products.code, products.terminal, products.gate, products.type, airlines.name, airlines.pic, airlines.phone, airlines.image FROM products INNER JOIN airlines ON products.airline_id = airlines.id WHERE products.id='${id}'`,
             (err, result) => {
                 if (err) {
                     reject(err);

@@ -44,12 +44,12 @@ module.exports = {
         city,
         address,
         postalCode,
-        photo = "",
+        image = "",
       } = body;
 
       db.query(
-        "UPDATE users SET name=$1, email=$2, phone=$3, city=$4, address=$5, postal_code=$6, photo=$7 WHERE id=$8",
-        [name, email, phone, city, address, postalCode, photo, id],
+        "UPDATE users SET name=$1, email=$2, phone=$3, city=$4, address=$5, postal_code=$6, image=$7 WHERE id=$8",
+        [name, email, phone, city, address, postalCode, image, id],
         (error, result) => {
           if (error) {
             reject(error);
@@ -58,11 +58,11 @@ module.exports = {
         }
       );
     }),
-  updatePhoto: (id, photo) =>
+  updatePhoto: (id, image) =>
     new Promise((resolve, reject) => {
       db.query(
-        "UPDATE users SET photo=$1 WHERE id=$2",
-        [photo, id],
+        "UPDATE users SET image=$1 WHERE id=$2",
+        [image, id],
         (error, result) => {
           if (error) {
             reject(error);

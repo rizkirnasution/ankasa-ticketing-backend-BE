@@ -70,7 +70,7 @@ const { failed } = require("../utils/createResponse");
 const multerUpload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "./public");
+      cb(null, "./public/photo");
     },
     filename: (req, file, cb) => {
       const ext = path.extname(file.originalname);

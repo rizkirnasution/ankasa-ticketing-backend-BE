@@ -94,7 +94,7 @@ const airlinesController = {
       const { name, pic, phone } = body;
 
       const data = {
-        image: `http://${PGHOST}:${PORT}/img/${image}`,
+        image: `http://${PGHOST}/img/${image}`,
         name,
         pic,
         phone,
