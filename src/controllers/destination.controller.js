@@ -7,13 +7,13 @@ const destinationController = {
     try {
       const id = uuidv4();
       const PORT = process.env.PORT;
-      const DB_HOST = process.env.DB_HOST;
+      const PGHOST = process.env.PGHOST;
       let image = req.file.filename;
       const setData = {
         id,
         country: req.body.country,
         place: req.body.place,
-        image: `http://${DB_HOST}:${PORT}/img/${image}`,
+        image: `http://${PGHOST}:${PORT}/img/${image}`,
         price: Number(req.body.price),
         totalAirline: Number(req.body.totalAirline),
         date: new Date(),

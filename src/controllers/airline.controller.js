@@ -89,12 +89,12 @@ const airlinesController = {
       const { body } = req;
       const id = uuidv4();
       const PORT = process.env.PORT;
-      const DB_HOST = process.env.DB_HOST;
+      const PGHOST = process.env.PGHOST;
       let image = req.file.filename;
       const { name, pic, phone } = body;
 
       const data = {
-        image: `http://${DB_HOST}:${PORT}/img/${image}`,
+        image: `http://${PGHOST}:${PORT}/img/${image}`,
         name,
         pic,
         phone,
